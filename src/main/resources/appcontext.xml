@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="student" class="com.deepak.pojo.Student">
+		<property name="roll" value="1"></property>
+		<property name="name" value="deepak"></property>
+	</bean>
+	<bean id="methodAround" class="com.deepak.advice.MethodAround"></bean>
+	<bean id="studentProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="student"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>methodAround</value>
+			</list>
+		</property>
+	</bean>
+</beans>
